@@ -5,8 +5,8 @@
     
     <entry>
       <title>hello, world</title>
-      <link href="posts/64237/"/>
-      <url>posts/64237/</url>
+      <link href="posts/13433/"/>
+      <url>posts/13433/</url>
       
         <content type="html"><![CDATA[<h1 id="写给自己"><a href="#写给自己" class="headerlink" title="写给自己"></a>写给自己</h1><p>现在时间是 0:27 ，今天把博客升级了一下，基本可以说是重新配置了一遍，好在有了之前的基础，无论是项目结构还是源码的分析基本都能适应。不过应该要注意的是，不要过分地在意于样式，之前就是感觉什么特性自己都要加入，导致迟迟不能完工。自己也从云服务器到静态博客都摸了一遍，发现博客这东西总有前端大牛去精益求精，自己的初衷是用博客来记录学习过程，太在意外观无疑是本末倒置，于是，定下这个版本，之后尽量让自己 <strong>专注于内容</strong> 上。</p><hr><h1 id="折腾记录"><a href="#折腾记录" class="headerlink" title="折腾记录"></a>折腾记录</h1><ul><li>Typecho Version 1.0 : 2020-7-3 至 2020-7-5</li><li>Hexo-Matery Version 1.0 : 2020-7-5 至 2020-7-8</li><li>Hexo-Butterfly Version -1.0 : 2020-7-8 至 2020-7-13 （Git仓库没有使用熟练以及作死使用Shift+Del删除文件导致无法恢复，前功尽弃）</li><li>Hexo-Butterfly Version 1.0 : 2020-7-13 至 2020-7-20</li><li><del>~ 预计 Hexo-Butterfly Version 1.1 动工时间：2021-1-1 ~</del></li><li>Hexo-Butterfly 主题升级至 3.5.1 版本 : 2021-1-22 至 2021-1-22 （增加了各种特性，放弃了魔改的版本，便于以后升级）</li></ul>]]></content>
       
