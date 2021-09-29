@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【Git】解决 「Your branch is up to date with &#39;origin/master&#39;.  nothing to commit, working tree clean」 问题</title>
+      <link href="posts/38887/"/>
+      <url>posts/38887/</url>
+      
+        <content type="html"><![CDATA[<p>hello</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Hexo】添加 volantis 主题下的 link 及时间线标签</title>
       <link href="posts/51050/"/>
       <url>posts/51050/</url>
@@ -53,11 +78,11 @@
       
         <tags>
             
+            <tag> Git </tag>
+            
             <tag> Hexo-ButterFly </tag>
             
             <tag> 外挂标签 </tag>
-            
-            <tag> Git </tag>
             
         </tags>
       
