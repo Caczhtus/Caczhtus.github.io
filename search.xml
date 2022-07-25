@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【图像处理】色彩的基本知识</title>
+      <link href="posts/40429/"/>
+      <url>posts/40429/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>图像很关键的一个知识点就是关于色彩的搭配和处理，无论你是一个图像领域的研究者，或者是设计领域的从业人员，学了这部分知识都有益于你做出一份更好的工作，因此，本文主要记录了关于色彩方面的知识。</p><hr><h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><h2 id="颜色的分类：有彩色和无彩色"><a href="#颜色的分类：有彩色和无彩色" class="headerlink" title="颜色的分类：有彩色和无彩色"></a>颜色的分类：有彩色和无彩色</h2><p>从属性上分，色彩一般可分为无彩色和有彩色两种。</p><h3 id="无彩色"><a href="#无彩色" class="headerlink" title="无彩色"></a>无彩色</h3><p>无彩色是指白色、黑色和由黑、白两色相互调和而形成的各种深浅不同的灰色，即反射白光的色彩。从物理学的角度看，它们不包括在可见光谱之中，故称之为无彩色。无彩色按照一定的变化规律，可以排成一系列。由白色渐变到浅灰、中灰到黑色，色度学上称此为黑白系列。黑白系列中由白到黑的变化，可以用一条水平轴表示，一端为白、一端为黑，中间有各种过渡的灰色。</p><p>无彩色系中的所有颜色只有一种基本性质，即<strong>明度</strong>。它们不具备色相和纯度的性质，也就是说它们的色相和纯度从理论上来说都等于零。明度的变化能使无彩色系呈现出梯度层次的中间过渡色，<strong>越接近白色，明度越高;越接近黑色，明度越低</strong>。</p><p>黑与白是时尚的永恒主题，强烈的对比 和脱俗的气质，无论是极简，还是花样百出，都能营造出十分引人注目的设计风格。极简 的黑与白，还可以表现出新意层出的设计。在极简的黑白主题色彩下，加入极精致的搭配，品质在细节中得到无限的升华，使作品 更加深入人心。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/12.png" alt=""></p><h3 id="有彩色"><a href="#有彩色" class="headerlink" title="有彩色"></a>有彩色</h3><p>有彩色是指包括在可见光谱中的全部色彩，有彩色的物理色彩有 6 种基本色：红、橙、 黄、绿、蓝、紫。基本色之间不同量的混合、基本色与无彩色之间不同量的混合所产生的 千千万万种色彩都属于有彩色系。有彩色是由光的波长和振幅决定的，波长决定色相，振幅决定色调。这 6 种基本色中，一般称红、黄、蓝为三原色;橙(红加黄)、绿(黄加蓝)、紫(蓝 加红)为间色。从中可以看到，这 6 种基本色的排列中原色总是间隔一个间色，所以，只需要 记住基本色就可以区分原色和间色。</p><p>这边其实还有一种色彩分类叫：赤橙黄绿青蓝紫，因为不同国家标准不一样，所以不用纠结。</p><h2 id="彩色三要素（HSB模式）"><a href="#彩色三要素（HSB模式）" class="headerlink" title="彩色三要素（HSB模式）"></a>彩色三要素（HSB模式）</h2><p>有彩色具有<strong>色相、明度、饱和度</strong>(也称彩度、纯度、艳度)的变化，色相、明度、饱和度 是色彩最基本的三要素，在色彩学上也称为色彩的三属性。将有彩色系按顺序排成一个圆形， 这便成为色相环。色环对于了解色彩之间的关系具有很大的作用。</p><p><strong>补充</strong>：其实还有个<strong>冷暖</strong>的概念，暖色有向前的感觉﹐冷色有后退的感觉。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/13.png" alt=""></p><p><strong>HSB模式</strong>：在平面设计中，经常接触到有关图像的色相(Hue)、明度(Brightness)和饱和度 (Saturation)的色彩概念，从 HSB 颜色模型中可以看出这些概念的基本情况。</p><h3 id="色相"><a href="#色相" class="headerlink" title="色相"></a>色相</h3><p>色相是指各类色彩的相貌称谓，是区别色彩种类的名称。如红、黄、绿、蓝、青等都代表 一种具体的色相。色相是一种颜色区别于其他颜色最显著的特性，在 0°~ 360°的标准色环 上，按位置度量色相。色相体现着色彩外向的性格，是色彩的灵魂。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/14.png" alt=""></p><p>因色相不同而形成的色彩对比叫色相对比。以色相环为依据，<strong>颜色在色相环上的距离远近决定色相的强弱对比，距离越近，色相对比越弱;距离越远，色相对比越强烈</strong>。</p><p>色相对比一般包括<strong>对比色对比、互补色对比、邻近色对比和同类色对比</strong>。这些对比中<strong>互补色对比是最强烈鲜明的</strong>，比如黑白对比就是互补对比。而<strong>同类色对比是最弱的对比</strong>，同类色对比是同一色相里的不同明度和纯度的色彩对比，因为它是距离最小的色相，属于模糊难分的色相。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/15.png" alt=""></p><h3 id="明度"><a href="#明度" class="headerlink" title="明度"></a>明度</h3><p>明度指的是<strong>色彩的明暗程度</strong>，有时也可称为亮度或深浅度。<strong>在无彩色中，最高明度为白色，最低明度为黑色</strong>。在有彩色中，任何一种色相中都有着一个明度特征。不同色相的明度也不同，<strong>黄色为明度最高的色，紫色为明度最低的色</strong>。任何一种色相如加入白色，都会提高明度，白色成分越多，明度也就越高；任何一种色相如加入黑色，明度相对降低，黑色成分越多，明度越低。</p><p>明度是全部色彩都有的属性，明度关系可以说是搭配色彩的基础，<strong>在设计中，明度最适宜于表现物体的立体感与空间感</strong>。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/16.png" alt=""></p><p>色相之间由于色彩明暗差别而产生的对比，称为明度对比，有时也叫黑白度对比。色彩对比的强弱决定于明度差别的大小，明度差别越大，对比越强；明度差别越小，对比越弱。利用明度的对比可以很好地表现色彩的层次与空间关系。</p><p>明度对比越强的色彩最明快、清晰，最具有刺激性；明度对比处于中等的色彩刺激性相对小些，表现比较明快，所以通常用在室内装饰、服装设计和包装设计中；而处于最低等的明度对比不具备刺激性，多使用在柔美、含蓄的设计中。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/17.png" alt=""></p><p>以单色为主色系，充分运用不同明度表现作品，使作品色彩分布平衡、颜色的统一和谐、层次简洁分明。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/18.png" alt=""></p><h3 id="饱和度"><a href="#饱和度" class="headerlink" title="饱和度"></a>饱和度</h3><p>饱和度是指<strong>色彩的强度或纯净程度</strong>，也称<strong>彩度、艳度或色度</strong>。对色彩的饱和度进行调整也 就是调整图像的彩度。<strong>饱和度表示色相中灰色分量所占的比例</strong>，它使用 0%(灰色)~100% 的 百分比来度量，<strong>当饱和度降低为 0 时，则会变成一个灰色图像</strong>，增加饱和度会增加其彩度。在标准色轮上，饱和度从中心到边缘递增。<strong>饱和度受到屏幕亮度和对比度的双重影响</strong>，<strong>一般亮度好对比度高的屏幕可以得到很好的色饱和度</strong>。</p><p><strong>补充『对比度和饱和度的区别』</strong>：</p><blockquote><ol><li>对比度:指的是最高亮度和最低亮度的比值。当图像对比度越高时,那么图像明暗差异越明显。</li><li>饱和度:指的是色彩的纯正程度。当图像的饱和度越高时,那么图像色彩越鲜艳。</li></ol></blockquote><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/19.png" alt=""></p><p><strong>色相之间因饱和度的不同而形成的对比叫纯度对比</strong>，很难划分高、中、低纯度的统一标准。可以简单地理解为，将一种颜色(如红色)与黑色相混合成 9 个等纯度色标，1<del>3 为低纯度色，4</del>6 为中纯度色，7~9 为高纯度色。</p><p>纯度相近的色彩对比，如：</p><ol><li>3 级以内的对比叫纯度弱对比，纯度弱对比的画面视觉效果比较弱，形象的清晰度较低，适合长时间及近距离观看；</li><li>纯度相差 4~6 级的色彩对比叫纯度中对比，纯度中对比是最和谐的，画面效果含蓄丰富，主次分明；</li><li>纯度相差 7~9 级的色彩对比叫纯度强对比，纯度强对比会出现鲜的更鲜、浊的更浊的现象，画面对比明朗、富有生气，色彩认知度也较高。</li></ol><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/20.png" alt=""></p><p>以彩度区分各数字的鲜明设计，以线条划分版面产生对比，再配以或深或浅的单纯背景，达到醒目、和谐的设计风格。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/21.png" alt=""></p><h2 id="什么是RGB？"><a href="#什么是RGB？" class="headerlink" title="什么是RGB？"></a>什么是RGB？</h2><p>原色，又称为基色，三原色(三基色)是指红(R)、绿(G)、蓝(B)三色，是调配其他色彩的基本色。原色的色纯度最高、最纯净、最鲜艳，可以调配出绝大多数色彩，而其他颜色则不能调配出三原色。</p><p><strong>加色三原色基于加色法原理</strong>。人的眼睛是根据所看见光的波长来识别颜色的。可见光谱中的大部分颜色可以由三种基本色光按不同的比例混合而成，这三种基本色光的颜色就是红(Red)、绿(Green)、蓝(Blue)三原色光。这三种光以相同的比例混合、且达到一定的强度， 就呈现白色；若三种光的强度均为零，就呈现黑色。这就是加色法原理，加色法原理被广泛应用于电视机、监视器等主动发光的产品中。</p><p><strong>补充</strong>：</p><ol><li>光的成色原理是加色法，即在黑色环境中用光后环境变亮了；</li><li>颜料的成色原理是减色法，即在白色材料上使用颜料后让它变暗了。</li><li>光三原色：红 绿 蓝；色的三原色：青 品 黄</li></ol><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/22.png" alt=""></p><h2 id="什么是CMYK？"><a href="#什么是CMYK？" class="headerlink" title="什么是CMYK？"></a>什么是CMYK？</h2><p>减色原色是指将一些颜料按照不同的组合混合在一起时，可以创建一个色谱。减色原色基于减色法原理。与显示器不同，在打印、印刷、油漆、绘画等靠介质表面的反射被动发光的场合，物体所呈现的颜色是光源中被颜料吸收后所剩余的部分，所以其成色的原理叫做减色法原理。</p><p>打印机使用减色原色(青色、洋红色、黄色和黑色颜料)并通过减色混合来生成颜色。减色法原理广泛应用于各种被动发光的场合。在减色法原理中的三原色颜料分别是青(Cyan)、 洋红(Magenta)和黄(Yellow)。通常所说的CMYK模式就是基于这种原理。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/23.png" alt=""></p><h2 id="色彩的性格"><a href="#色彩的性格" class="headerlink" title="色彩的性格"></a>色彩的性格</h2><p>当人们看到颜色时，对它所描绘的印象中具有很多共通性，比如看到红色、橙色或黄色 会产生温暖感；看到海水或月光时，会产生清爽的感觉，于是当人们看到青、绿之类的颜色， 也相应会产生凉爽感。由此可见，色彩的温度感不过是人们的习惯反映，是人们长期实践的结果。（<strong>冷暖</strong>）</p><p>人们将红、橙之类的颜色叫暖色；把青、青绿之类的颜色叫冷色。红紫到黄绿属暖色，青绿到青属冷色，其中以青色为最冷；紫色是由属于暖色的红色和属于冷色的青色组合而成，所以紫和绿被称为温色，黑、白、灰、金、银等色称为中性色。</p><p>需要注意的是，色彩的冷暖是相对的，比如无彩色(如黑、白)与有彩色(如黄、绿等) 后者比前者暖；而如果从无彩色本身看，黑色比白色暖；从有彩色来看，同一色彩中含红、 橙、黄成分偏多时偏暖；含青的成分偏多时偏冷。所以说，色彩的冷暖并不是绝对的。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/24.png" alt=""></p><p>鲜红的海报设计，表现出强烈的热情气氛；蓝、绿相间的组合，体现出青春、理智和现代的气息，或给人积极、愉悦、温暖的感觉，或给人平静、轻松的情绪。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/25.png" alt=""></p><h2 id="色彩三要素的应用空间"><a href="#色彩三要素的应用空间" class="headerlink" title="色彩三要素的应用空间"></a>色彩三要素的应用空间</h2><p>表示色彩的前后，通过色相﹑明度﹑纯度﹑冷暖以及形状等因素构成：</p><ol><li>明度高的颜色有向前的感觉，明度低的颜色有后退的感觉；</li><li>暖色有向前的感觉，冷色有后退的感觉；</li><li>高纯度色有向前的感觉，低纯度色有后退的感觉；</li><li>色彩整有向前的感觉，色彩不整、边缘虚有后退的感觉；</li><li>色彩面积大有向前的感觉，色彩面积小有后退的感觉；</li><li>规则形有向前的感觉，不规则形有后退的感觉；</li></ol><div class="justified-gallery"><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/26.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/27.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/28.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/29.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/30.png" alt=""></p>          </div><hr><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ol><li><a href="https://xw.qq.com/cmsid/20210923A0FJZF00?f=newdc&ivk_sa=1024320u">色彩的基础知识</a></li><li><a href="http://www.360doc.com/content/17/0328/15/1381984_640843527.shtml">设计色彩的三要素</a></li><li><a href="https://www.jianshu.com/p/0699fbd79c2a">色彩三属性——色相，纯度（饱和度，彩度），明度</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 图像处理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 图像处理 </tag>
+            
+            <tag> 色彩 </tag>
+            
+            <tag> Photoshop </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Linux】Ubuntu 18.04 配置 Jupyter Lab</title>
       <link href="posts/110/"/>
       <url>posts/110/</url>
@@ -266,9 +295,9 @@
       
         <tags>
             
-            <tag> Blog </tag>
-            
             <tag> Hexo-ButterFly </tag>
+            
+            <tag> Blog </tag>
             
         </tags>
       
