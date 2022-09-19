@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>【基础算法】手写正有理数数的开 n 次根号</title>
+      <link href="posts/13296/"/>
+      <url>posts/13296/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.nowcoder.com/questionTerminal/5272cb35e20d460d85362c3728d4197a">[编程题]开根号</a></p><hr><h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>在没有任何数学库函数的情况下，求一个数 m 开 n 次方的结果。</p><p>输入描述:</p><blockquote><p>每组输入只有1行，包括有一个正实数m和一个正整数n，其中$1 &lt;= n &lt;= 32$, 1&lt;=m&lt;=$2^{n}$</p></blockquote><p>输出描述:</p><blockquote><p>输出只有一行，打印m开n次方的结果，小数点后面保留12位。</p></blockquote><p>样例：</p><blockquote><p>输入：<br>2 10<br>输出：<br>1.071773462536</p></blockquote><hr><h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><p>说点题外话，这个问题实际上就是要让我们手写幂函数的逻辑，因为一个<strong>有理数显然可以写成分数的形式</strong>，那么分子部分就是求整数幂，分母部分就是本题的开整数次方，所以最后就可以拼凑成 <code>pow</code> 函数的功能。</p><blockquote><p><strong>来自知乎回答</strong>：</p><ul><li><a href="https://www.zhihu.com/question/22996772/answer/23304170">链接1：C/C++中math库实现的pow函数的思路是什么，效率高吗？</a></li><li><a href="https://www.zhihu.com/question/371640514">链接2：C语言中的pow函数的实数次方是怎么实现的？</a></li></ul><p>标准库中，pow 的实现依赖于一种变形：$x=a^{\log_ax}$, a 一般都取自然常数 e ，即：$x=e^{\ln{x}}$。于是，$\sqrt[n]{x}$ 就等价于：$x^{\frac{1}{n}}=e^{\ln{x^{\frac{1}{n}}}}=e^{\frac{1}{n}*\ln{x}}$，这两部分就可以用泰勒级数取前 n 项逼近函数值了。</p></blockquote><p>在数学课中，我们知道这种开根号求根问题，可以等价于它的反函数对应方程的解。比如这个问题的原问题是：<br>$$<br>y=\sqrt[n]{x},\ 当\ x=m\ 时，\ y\ 取何值？<br>$$<br>这个问题换个说法就是：<br>$$<br>x=y^n,\ 当\ x=m\ 时，\ y \ 取和值？<br>$$<br>这样看似在说废话，但是却有很多好处，因为我们可以<strong>枚举 $y$ 去找这个近似解</strong>了，当然我们可能还是不好枚举，因为这个 $y$ 可能是一个小数，这该怎么枚举呢？</p><p>随着这个枚举思路的引进，我们也看到了一点曙光，因为我们可以把解约束到某个长度为 1 的整数区间中了，这一步的做法是 $O(m)$ 的时间复杂度。但是要怎么更进一步提高解的精度呢？</p><p>我们观察，在线性的枚举过程中我们发现，这个枚举的序列其实是<strong>有序</strong>的，所以我们可以利用二分将上面的枚举优化到 $O(logm)$ 的时间复杂度。但这其实并不能提高解的精度，怎么办呢？</p><p>不难发现，其实这个长度为 1 的区间中，其实也是<strong>有序</strong>的，只不过他们是小数而已。于是，二分答案的算法呼之欲出。</p><h3 id="二分答案"><a href="#二分答案" class="headerlink" title="二分答案"></a>二分答案</h3><p>对于一个组询问，我们搜索区间 [0, m]，因为解一定存在，可以搜索到答案接近到一定精度后才结束搜索，所以二分的左端点和右端点类型应该是浮点数。当答案大于 m，选择左区间；否则选择右区间。算法时间复杂度 $O(logkm)$，k是某个常数。</p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-13</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">double</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%llf%llf&quot;</span>,&amp;m,&amp;n);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> l = <span class="number">0.0</span>, r = m;</span><br><span class="line">    <span class="keyword">while</span>(r - l &gt;= eps || l - r &gt;= eps) &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">double</span> mid = (r + l) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">double</span> tmp = mid;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) tmp *= mid;</span><br><span class="line">        <span class="keyword">if</span>(tmp &gt; m)&#123;</span><br><span class="line">            r = mid;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            l = mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.12llf\n&quot;</span>,l);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="牛顿迭代法"><a href="#牛顿迭代法" class="headerlink" title="牛顿迭代法"></a>牛顿迭代法</h3><p>我们知道牛顿迭代法可以求一些曲线零点，它的思想是用泰勒展开的前两项，也就是线性部分去逼近零点。已知二次根号比较容易做到了，那么 n 次根号实际上也是一样，只不过最后形成的式子稍微复杂一点。值得注意的是，计算机的浮点数会有精度误差，为了避免精度误差导致死循环等问题，<strong>除法要尽量少做</strong>。以下是推导过程：</p><p>设 $y=x^n-m$，则 $y’=nx^{n-1}$。<br><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/Caczhtus/Caczhtus-imgs/images/article/7.jpg" alt="牛顿迭代法"><br>实际上，牛顿迭代法就是<strong>在当前点求切线，利用切线和 x 轴的交点跳到那个交点横坐标所对应的曲线位置，迭代后逼近曲线的零点</strong>。于是，利用导函数和切线我们可以得到以下式子：<br>$$<br>斜率k=\frac{0-({x_k}^n-m)}{x_{k+1}-x_k}=n{x_k}^{n-1} \iff x_{k+1}=x_k-\frac{x_k}{n}+\frac{m}{n}{x_k}^{1-n}<br>$$<br>于是，利用这个式子，我们不断迭代使得第 k 项和第 k + 1 项接近到一定精度即可。（注意这边区别于二分的做法就是不用再去考虑根的 n 次方接近 m 的精度，因为两者是几乎等价的）。</p><p>注意做 ${x_k}^{1-n}$ 这项尽量先用乘法做 n - 1 项，然后再做一次除法，避免精度误差。</p><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const long double esp &#x3D; 1e-13;</span><br><span class="line">int n;</span><br><span class="line">long double m, xk1, xk, cur, tmp;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    scanf(&quot;%llf%d&quot;,&amp;m, &amp;n);</span><br><span class="line">    cur &#x3D; m;</span><br><span class="line">    do &#123;</span><br><span class="line">        xk &#x3D; cur;</span><br><span class="line">        xk1 &#x3D; xk;</span><br><span class="line">        tmp &#x3D; n &#x2F; m;</span><br><span class="line">        for (int i &#x3D; 1; i &lt; n; i++) tmp *&#x3D; xk;</span><br><span class="line">        xk1 +&#x3D; 1.0 &#x2F; tmp - xk &#x2F; n;</span><br><span class="line">        cur &#x3D; xk1;</span><br><span class="line">    &#125;while(xk - xk1 &gt;&#x3D; esp || xk1 - xk &gt;&#x3D; esp);</span><br><span class="line">    printf(&quot;%.12llf\n&quot;, xk1);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 牛顿迭代法 </tag>
+            
+            <tag> 二分法 </tag>
+            
+            <tag> C++ </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【图像处理】色彩的基本知识</title>
       <link href="posts/40429/"/>
       <url>posts/40429/</url>
@@ -53,9 +84,9 @@
             
             <tag> Linux </tag>
             
-            <tag> Jupyter </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Jupyter </tag>
             
         </tags>
       
@@ -84,9 +115,9 @@
             
             <tag> Linux </tag>
             
-            <tag> Python </tag>
-            
             <tag> Anaconda </tag>
+            
+            <tag> Python </tag>
             
         </tags>
       
