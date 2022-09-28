@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>【Numpy】基于numpy库的范数计算方法</title>
+      <link href="posts/34523/"/>
+      <url>posts/34523/</url>
+      
+        <content type="html"><![CDATA[<h1 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h1><p>范数(norm)是数学中的一种基本概念。在泛函分析中，它定义在赋范线性空间中，并满足一定的条件，即①非负性；②齐次性；③三角不等式。它常常被用来度量某个向量空间（或矩阵）中的每个向量的长度或大小。</p><h1 id="np-linalg-norm"><a href="#np-linalg-norm" class="headerlink" title="np.linalg.norm"></a>np.linalg.norm</h1><p>（1）np.linalg.inv()：矩阵求逆<br>（2）np.linalg.det()：矩阵求行列式（标量）</p><p>linalg=linear（线性）+algebra（代数），norm则表示范数。首先需要注意的是范数是对向量（或者矩阵）的度量，是一个标量（scalar）：</p><p>首先help(np.linalg.norm)查看其文档：</p><blockquote><p>x_norm=np.linalg.norm(x, ord=None, axis=None, keepdims=False)</p></blockquote><p>①x: 表示矩阵（也可以是一维）<br>②ord：范数类型</p><p>向量的范数：</p><table><thead><tr><th align="center">参数</th><th align="center">说明</th><th align="center">计算方法</th></tr></thead><tbody><tr><td align="center">默认</td><td align="center">二范数：$\mathscr{l}_2$</td><td align="center">$\sqrt{x_{1}^{2}+x_{2}^{2}+…+x_{n}^{2}}$</td></tr><tr><td align="center"></td><td align="center"></td><td align="center"></td></tr><tr><td align="center"></td><td align="center"></td><td align="center"></td></tr><tr><td align="center"></td><td align="center"></td><td align="center"></td></tr></tbody></table><hr><h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ol><li><a href="https://baike.baidu.com/item/%E8%8C%83%E6%95%B0/10856788">范数-百度百科</a></li><li><a href="https://cloud.tencent.com/developer/article/1406349">np.linalg.norm</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Numpy </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> numpy </tag>
+            
+            <tag> 矩阵分析 </tag>
+            
+            <tag> 范数 </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【基础算法】手写正有理数数的开 n 次根号</title>
       <link href="posts/13296/"/>
       <url>posts/13296/</url>
@@ -326,9 +357,9 @@
       
         <tags>
             
-            <tag> Blog </tag>
-            
             <tag> Hexo-ButterFly </tag>
+            
+            <tag> Blog </tag>
             
         </tags>
       
