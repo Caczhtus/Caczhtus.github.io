@@ -235,7 +235,7 @@ if (fontSizeVal !== undefined) {
   const init = () => {
     let initData = {
       el: '#twikoo-wrap',
-      envId: 'https://twikoo-ten-flame.vercel.app/',
+      envId: 'https://twikoo-ten-flame.vercel.app',
       region: ''
     }
 
@@ -249,7 +249,7 @@ if (fontSizeVal !== undefined) {
 
   const getCount = () => {
     twikoo.getCommentsCount({
-      envId: 'https://twikoo-ten-flame.vercel.app/',
+      envId: 'https://twikoo-ten-flame.vercel.app',
       urls: [window.location.pathname],
       includeReply: false
     }).then(function (res) {
