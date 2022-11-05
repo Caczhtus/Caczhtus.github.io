@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【Linux】Linux 下载种子文件命令</title>
+      <link href="posts/39510/"/>
+      <url>posts/39510/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>当我们获得了一个种子文件，在 Windows 系统下我们通常会借助百度云、迅雷等工具进行资源下载，但是在 Linux 环境下要怎么办呢？有的人回想，那能不能照猫画虎，也下个工具帮助我们下载呢？答案是可以的。但是这种做法会有两个问题，第一是步骤繁琐，第二是速度受限。于是，借由 Linux 方便的工具库，我们希望能通过几句命令行完成我们的需求，<code>aria2c</code> 这个工具就可以很好地实现我们地需求，本文将具体记录这个工具的命令使用。</p><hr><h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><h2 id="BT-种子是什么？"><a href="#BT-种子是什么？" class="headerlink" title="BT 种子是什么？"></a>BT 种子是什么？</h2><h3 id="torrent-文件的原理"><a href="#torrent-文件的原理" class="headerlink" title="torrent 文件的原理"></a>torrent 文件的原理</h3><p>当你对一个文件（或者文件夹）制作成 <code>.torrent</code> 文件，实际上是将一些信息放入生成的<code>.torrent</code> 文件，通过这些信息其他用户就可以进行下载，如果你是种子制作者你要在线，否则这个种子是无法下载的，但是当有其他用户通过你的种子下载了，那么这些已经下载完了的用户在线，其他用户也能下载。</p><h3 id="软件读取-torrent-文件的原理"><a href="#软件读取-torrent-文件的原理" class="headerlink" title="软件读取 torrent 文件的原理"></a>软件读取 torrent 文件的原理</h3><p><strong>下载软件拿到.torrent文件后，先进行打开，读取里面的这些信息</strong></p><ol><li>torrent 中有 Tracker 的地址，下载软件拿到后，会去跟 Tracker 进行通讯，告诉 Tracker：我要下载这个文件, Tracker收到请求后，会记录这个客户端的公网IP（记录这厮在下载这个文件），同时呢，会返回给他：我这边还知道哪些人也在下载这个文件，一般是会返回 200 个IP（如果不够，当然就有多少返回多少）。当然了，如果下载过程中，协议要求你必须5分钟跟 tracker 通讯一次，如果太久不通讯，tracker 就认为你下线了，会把你从节点列表中删除的。</li><li>客户端拿到了一堆 IP 后，就开始挨个去尝试连接，连上后就开始互相通讯了。比如告诉对方，我有哪些分块，问问对方有哪些，然后把我有的给对方；让对方把他有的某一块给我，这样就你来我往开始了下载。当然，如果很悲催的情况下，此时没别人在线，那就只能没速度了，就只能不停的找啊找啊找朋友，直到找到一个好朋友。</li><li>当然，如果 torrent 中有一个 P2SP 的 Http 地址辅助下载，那么也可以同时从这个 Http 服务器要数据，也会把这个服务器当成一个普通的节点，每次要1块数据，通过 Http 协议里面的 Range 标记，指定只要一部分数据过来辅助下载。</li><li>如果 Tracker 服务器出问题了，连不上这个问询的服务器，就拿不到周围的邻居节点，怎么办？—NB的 BT 发明者提出了 DHT 的概念，就算 Tracker 连不上了，也可以通过分布式哈希表 DHT 技术，通过 DHT 网络慢慢的寻找志同道合的邻居节点，只是没有 Tracker 那么直接那么快速，但慢一些总还是有机会找到邻居的。【分布式哈希表参考[4]】</li></ol><h3 id="为何没设速度"><a href="#为何没设速度" class="headerlink" title="为何没设速度"></a>为何没设速度</h3><p>没有速度通常和网络环境、配置有关。我们需要在防火墙中设置对外开放端口。由于大多数用户都是内网IP，做种需要外网IP。路由器中要设置端口映射、内网穿透等相关设置。软硬结合才能方便做种。</p><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>BT种子还包含了Tracker信息，用以告诉你BT下载需要走哪个Tracker，也就是服务器开始——没错，利用BT种子来进行下载，还是得先走服务器这个流程。用BT种子下载，需要服务器先告诉你其他用户的IP，才能开始数据传输。在这种情况下玩BT，尽管也是P2P下载，但仍然离不开服务器。</p><p>这就造成了一个问题，<strong>一旦某个BT服务器翘辫子，那么使用该服务器作为Tracker的BT种子，就会失效。而BT服务器挂掉的情况，不要太多。这里既存在服务器自个儿关停的情况，也存在服务器被查水表的情况</strong>。</p><p>不少老司机应该还对2009年著名BT下载站 <code>BTChina</code> 被查水表心有余悸。随 BTChina 倒下的不仅仅有一票 BT 资源站，还有无数的 Tracker 服务器，这直接导致很多 BT 种子成为了死种。</p><p>直到现在，有经验的老司机在找旧资源的时候，如果看到资源是BT种子，很有可能会直接放弃——除非迅雷等之类的离线下载服务器有缓存相应资源，不然这种子基本就是摆设；而离线下载的和谐力度，大家都懂的。死种、离线和谐都见证了下载中间服务器的脆弱，人们急需续命能力更强的下载方式。历史的进程，就悄然走到了磁力链接的身旁。</p><p>磁力链接有啥好？</p><p>显然，BT种子的死穴在于Tracker服务器。其实BT下载资源本身就不由服务器提供，服务器提供的只是P2P参与者的信息。那么能不能跳过Tracker这一步，直接连接其他用户进行P2P？BT磁力链接就可以做到这一点。</p><h2 id="磁力链接"><a href="#磁力链接" class="headerlink" title="磁力链接"></a>磁力链接</h2><p>原理：可以另每一台电脑都充当tracker服务器，这样就不怕tracker服务器被封导致批量种子失效</p><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>一般人看到磁力链接，看到的是不明所以的神秘代码，但这神秘代码，其实可以包含很多信息。磁链包含了文件信息，这自然不必说。磁链的文件信息的组合很灵活，不过必须的就一个Hash码。除此以外，磁链还可以包含Tracker地址、DHT节点等信息，但无论如何，必须的仍就只有一个Hash码。</p><blockquote><p>磁链可包含的一些参数，必须的只有“xt”<br>dn（显示名称）- 文件名<br>xl（绝对长度）- 文件字节数<br>xt（eXact Topic）- 包含文件散列函数值的URN<br>as（可接受来源） - 在线文件的网络链接<br>xs（绝对资源）- P2P链接<br>kt（关键字）- 用于搜索的关键字<br>mt（文件列表）- 链接到一个包含磁力链接的元文件 (MAGMA - MAGnet MAnifest）<br>tr（Tracker地址）- BT下载的Tracker URL</p></blockquote><p>磁力链接可以让用户直接通过 DHT 网络进行 P2P 下载，无需经由Tracker服务器。所谓的DHT网络，全称是<code>Distributed Hash Table</code>，也就是分布式储存、只用文件 Hash 码来辨别资源的的网络。这个网络中，用户作为节点存在，每个用户都可以作为 P2P 的发起点和传播点，利用磁链进行BT下载，不需要找Tracker服务器，只需要连上 DHT 网络的节点，就可以开始了。</p><p>当然，就算使用磁链进行 BT 下载，如果磁链提供了 Tracker 信息，Tracker 服务器也能大大提高下载效率，这是肯定的。一些下载软件下载磁链的时候，会把自带的一些Tracker信息结合磁链封装成BT种子，加快下载效率。</p><p>但总的来说，磁链可谓是一脚踢开了服务器！你在网上看到一串 Hash 码，直接在前面加上<code>magnet:?xt=urn:btih:</code>，就能生成一个可用的磁链，下载到 Hash 码对应的文件了。显然，磁链对比BT种子，优势是显而易见的，这体现在以下方面:</p><ol><li>传播方便。作为一串文字，磁链显然比BT种子更容易传播，粘贴一段文字可比上传一个文件省时省力多了。</li><li>便于储存整理。如果你拥有很多很多磁力链，你可以把它们都放到一个文档或者表格中，整理得井井有条。很多资源站放种子合集，也可以轻易贴出满满一网页的磁链。而BT种子作为文件，就没有这么方便了。在储存空间上，磁链更是具有得天独厚的优势，海盗湾把所有的种子转换成磁链后，体积只有90M，任何一台电脑都可以完全装下海盗湾的BT资源。</li></ol><h3 id="为何求种只给神秘代码？这才是真正的BT种子-磁链"><a href="#为何求种只给神秘代码？这才是真正的BT种子-磁链" class="headerlink" title="为何求种只给神秘代码？这才是真正的BT种子/磁链"></a>为何求种只给神秘代码？这才是真正的BT种子/磁链</h3><p>易于生成。当你看到网友有某个好资源，只要问对面生成一下该文件的 Hash 码，就能够制作一个磁链了，不需要辛辛苦苦把BT种子给翻出来。</p><p>资源存活力强。磁链不需要Tracker服务器，直连DHT网络。只要仍有用户在做种，资源就仍然存活。和BT种子相比，磁力链接的优点非常突出。所以现在求种直接甩你磁力链接/Hash码，也就理所当然了。</p><p>可见，相比BT种子，磁链更容易发挥出BT下载的P2P精神。得益于磁链，2009年后一度式微的 BT 下载又重获生机。面对日渐和谐的离线下载，BT磁链仍大有用武之地，希望大家都能从磁链中享用到BT下载的乐趣！</p><h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><p><strong>说明</strong>：很多人肯定以为 Aria2 只是一个下载工具，需要配合前端比如 Aria2 Web UI、AriaNg 等使用，其实 Aria2 本身就是个命令行工具，优点是轻量、开源，支持多协议、多线程，可以直接使用 Aria2 命令来下载 BT 种子等资源文件，这里说下 Aria2 命令使用方法。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install aria2  #CentOS系统</span><br><span class="line">apt-get install aria2  #Debian/Ubuntu系统</span><br></pre></td></tr></table></figure><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="直链下载"><a href="#直链下载" class="headerlink" title="直链下载"></a>直链下载</h3><p>下载直链文件，只需在命令后附加地址</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c http://xx.com/xx</span><br></pre></td></tr></table></figure><p>如果需要重命名为 yy 的话加上<code>--out</code>或者<code>-o</code>参数</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aria2c --out=yy http://xx.com/xx</span><br><span class="line">aria2c -o yy http://xx.com/xx</span><br></pre></td></tr></table></figure><p>使用 aria2 的分段和多线程下载功能可以加快文件的下载速度，对于下载大文件时特别有用。<code>-x</code> 分段下载，<code>-s</code> 多线程下载</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -s 2 -x 2 http://xx.com/xx</span><br></pre></td></tr></table></figure><p>这将使用2个连接和2个线程来下载该文件。</p><h3 id="BT-下载"><a href="#BT-下载" class="headerlink" title="BT 下载"></a>BT 下载</h3><p>种子和磁力下载</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aria2c ‘xxx.torrnet‘</span><br><span class="line">aria2c \&#x27;磁力链接\&#x27;</span><br></pre></td></tr></table></figure><p>列出种子内容</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -S xxx.torrent</span><br></pre></td></tr></table></figure><p>下载种子内编号为<code>1、4、5、6、7</code>的文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c --select-file=1,4-7 xxx.torrent</span><br></pre></td></tr></table></figure><p>设置bt端口</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c --listen-port=3653 ‘xxx.torrent’</span><br></pre></td></tr></table></figure><h3 id="限速下载"><a href="#限速下载" class="headerlink" title="限速下载"></a>限速下载</h3><p>单个文件最大下载速度</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c --max-download-limit=300K -s10 -x10 \&#x27;http://xx.com/xx\&#x27;</span><br></pre></td></tr></table></figure><p>整体下载最大速度</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c --max-overall-download-limit=300k -s10 -x10 \&#x27;http://xx.com/xx\&#x27;</span><br></pre></td></tr></table></figure><p>这些基本都是常用的几个命令，更多的可以使用 <code>man aria2c</code> 和 <code>aria2c -h</code> 查看。</p><hr><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ol><li><a href="https://www.likecs.com/show-155294.html">bt种子简介与magnet磁力介绍</a></li><li><a href="https://www.likecs.com/show-155310.html">BT种子</a></li><li><a href="https://www.likecs.com/show-318474.html#sc=666.4000244140625">Linux使用Aria2命令下载BT种子/磁力/直链文件</a></li><li><a href="https://zhuanlan.zhihu.com/p/378158744">分布式哈希表DHT</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Tools </tag>
+            
+            <tag> Resource </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Hexo】部署 Twikoo + MongoDB Cloud + Vercel 评论区</title>
       <link href="posts/46184/"/>
       <url>posts/46184/</url>
@@ -390,9 +419,9 @@
       
         <tags>
             
-            <tag> Blog </tag>
-            
             <tag> Hexo-ButterFly </tag>
+            
+            <tag> Blog </tag>
             
         </tags>
       
